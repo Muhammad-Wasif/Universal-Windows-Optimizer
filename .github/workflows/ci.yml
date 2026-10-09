@@ -1,0 +1,30 @@
+name: CI / Script Validation
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate PowerShell Scripts
+        shell: powershell
+        run: |
+          $scripts = Get-ChildItem -Recurse -Filter "*.ps1"
+          $modules = Get-ChildItem -Recurse -Filter "*.psm1"
+          Write-Host "Found $($scripts.Count) scripts and $($modules.Count) modules."
+          foreach ($file in ($scripts + $modules)) {
+              Write-Host "Checking syntax: $($file.FullName)"
+              $errors = $null
+              [System.Management.Automation.Language.Parser]::ParseFile($file.FullName, [ref]$null, [ref]$errors)
+              if ($errors.Count -gt 0) {
+                  Write-Error "Syntax error in $($file.Name): $($errors[0].Message)"
+              }
+          }
+          Write-Host "All scripts parsed successfully."

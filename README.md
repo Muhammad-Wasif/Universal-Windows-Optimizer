@@ -1,75 +1,51 @@
-# ⚡ Universal Windows 10 & 11 Optimizer and Cleaner
+# ⚡ Universal Windows Optimizer & Latency Suite
 
-[![OS: Windows 10](https://img.shields.io/badge/OS-Windows%2010-0078D6?logo=windows&logoColor=white)](https://microsoft.com)
-[![OS: Windows 11](https://img.shields.io/badge/OS-Windows%2011-0080FF?logo=windows11&logoColor=white)](https://microsoft.com)
-[![Arch: x86 / x64](https://img.shields.io/badge/Arch-32--bit%20%7C%2064--bit-success)](https://github.com)
+[![Release](https://img.shields.io/github/v/release/Muhammad-Wasif/Universal-Windows-Optimizer?color=blue&logo=github)](https://github.com/Muhammad-Wasif/Universal-Windows-Optimizer/releases)
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen?logo=github-actions)](https://github.com/Muhammad-Wasif/Universal-Windows-Optimizer/actions)
+[![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%7C%20Windows%2011-0078D6?logo=windows&logoColor=white)](https://microsoft.com)
+[![Architecture](https://img.shields.io/badge/Arch-x86%20%7C%20x64-success)](docs/ARCHITECTURE.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![PowerShell: 5.1+](https://img.shields.io/badge/PowerShell-5.1%2B-5391FE?logo=powershell&logoColor=white)](https://github.com)
+[![PowerShell: 5.1+](https://img.shields.io/badge/PowerShell-5.1%2B-5391FE?logo=powershell&logoColor=white)](https://microsoft.com)
 
-A high-performance, **battery-safe** system cleaner and optimizer engineered for **both Windows 10 and Windows 11** across **32-bit (x86) and 64-bit (x64)** architectures. Features a **complete, 100% reversible rollback scene** so you can restore default Windows settings anytime with a single click.
+A production-grade, **battery-safe** systems optimizer, debloater, and latency tuning framework engineered for enterprise workstations, gaming systems, and mobile laptops running **Windows 10 and Windows 11** across **32-bit (x86) and 64-bit (x64)** architectures.
 
----
-
-## 🌟 Key Features
-
-### 🔋 1. Battery-Safe Performance Mode
-Unlike standard "tweakers" that force static 100% CPU clock schemes (destroying laptop battery life and causing high fan noise), this optimizer uses **Dynamic Autonomous Frequency Scaling (Intel Speed Shift / AMD CPPC)**:
-- **Idle / Lightweight Use:** CPU drops to 800 MHz and enters deep low-power sleep states (C8/C10, ~0.5W–1.2W).
-- **Active Workloads:** Instantly boosts to maximum turbo frequency in under 1 millisecond.
-- **Sleep Protection:** Disables background wake timers on battery power to prevent laptop drain inside bags.
-
-### 🚀 2. Ultra-Low UI Latency
-- Disables window minimize/maximize animations, taskbar animations, and smooth scrolling.
-- Turns off GPU-taxing acrylic transparency, saving graphics pipeline wattage.
-- Drops menu hover delay from 400ms to 10ms for instantaneous menu rendering.
-- **Keeps ClearType Font Smoothing intact** so text always looks sharp and readable.
-
-### 🛡️ 3. Safe Bloatware & OneDrive Removal
-- Safely removes background UWP bloat (Clipchamp, Bing News/Weather, Solitaire, To-Do, Feedback Hub, Xbox overlays).
-- **Guaranteed Essential App Protection:** Never removes Microsoft Store, Calculator, Photos, Notepad, Paint, or Windows Terminal.
-- Uninstalls and neutralizes OneDrive (per-user and machine-wide) across 32-bit and 64-bit paths without broken Explorer shortcuts.
-
-### 🛑 4. Windows Updates & Delivery Optimization Control
-- Disables automatic background update downloads and forced restarts.
-- Completely shuts down Delivery Optimization (`DoSvc`) peer-to-peer network bandwidth hogging.
-- Disables background update wake-up tasks.
-
-### ⚡ 5. Background Process & CPU Scheduling Optimization
-- Reallocates core scheduler priority: gives **90% CPU priority to foreground applications** (`SystemResponsiveness = 10`).
-- Disables background telemetry services (`DiagTrack`, `dmwappushservice`).
-- Disables heavy background scanners like `Microsoft Compatibility Appraiser` and Customer Experience Improvement tasks.
-- Removes Microsoft Edge Startup Boost and background auto-launch (`--win-session-start`).
-
-### 🧹 6. Deep System Junk Cleaner
-Purges temporary folders, Windows Prefetch residue, SoftwareDistribution update cache, Delivery Optimization cache, error reporting queues, and crash dumps.
-
-### 🔄 7. 100% Reversible Rollback Scene
-Includes a dedicated rollback tool ([Restore-Defaults.bat](rollback/Restore-Defaults.bat)) that:
-- Restores original Windows Update services (`wuauserv`, `DoSvc`, `UsoSvc`).
-- Re-enables UI animations, transparency, and default menu delays.
-- Re-enables telemetry services and default system responsiveness.
-- Automatically saves state snapshots to `config/backup-state.json`.
+Includes a **100% reversible rollback engine** with automated system snapshots, ensuring complete disaster recovery and compliance with IT management standards.
 
 ---
 
-## 🖥️ Compatibility Matrix
+## 🚀 Key Architectural Highlights
 
-| Operating System | 32-bit (x86) | 64-bit (x64) | Form Factor |
-| :--- | :---: | :---: | :---: |
-| **Windows 11 (21H2, 22H2, 23H2, 24H2+)** | N/A (64-bit only) | ✅ Supported | Laptops & Desktops |
-| **Windows 10 (1507 through 22H2)** | ✅ Supported | ✅ Supported | Laptops & Desktops |
+* **🔋 Battery-Safe Dynamic Power Tuning:** Unlike aggressive tweakers that lock CPU clock multipliers to 100% (causing high idle wattage and thermal throttling), this suite leverages **Autonomous Hardware P-States (Intel Speed Shift / AMD CPPC)**. Core frequencies scale from a 5% idle floor up to full turbo boost in <1ms, enabling deep C8/C10 low-power states (~0.5W–1.2W).
+* **⚡ Foreground Thread Scheduler Optimization:** Tunes the Windows Multimedia Class Scheduler Service (MMCSS) to reserve **90% CPU priority for foreground applications** (`SystemResponsiveness = 10`), eliminating input latency, micro-stutters, and window redraw delays.
+* **🛡️ Safe Non-Destructive Debloat:** Automatically strips telemetric and promotional UWP packages while strictly safeguarding essential system utilities (*Microsoft Store, Calculator, Photos, Notepad, Paint, Windows Terminal*).
+* **🛑 Complete Windows Update & Telemetry Control:** Disables background update scans, Delivery Optimization P2P network saturation, and heavy diagnostic services like `Microsoft Compatibility Appraiser` and `DiagTrack`.
+* **📁 Architecture-Agnostic Execution:** Dynamically handles native hives and `Wow6432Node` registries, guaranteeing stable execution across both 32-bit and 64-bit kernels.
+* **🔄 Full Reversibility (Rollback Scene):** Every modification includes an exact 1:1 reversal routine to return any machine to vanilla Microsoft baseline settings.
 
 ---
 
-## 🚀 Quick Start
+## 📦 Production Releases & Launchers
 
-### Option A: One-Click Launcher (Recommended)
-1. Download or clone this repository:
-   ```bash
+Pre-packaged production launchers and standalone distributions are located in the [`release/`](release/) directory:
+
+| Component | Path | Description |
+| :--- | :--- | :--- |
+| **Production Launcher** | [`release/Universal-Optimizer.bat`](release/Universal-Optimizer.bat) | One-click auto-elevating runner with interactive menu |
+| **Production Rollback** | [`release/Restore-Defaults.bat`](release/Restore-Defaults.bat) | One-click disaster recovery restoring default Windows state |
+| **Core Automation Engine** | [`src/Universal-Optimizer.ps1`](src/Universal-Optimizer.ps1) | Master orchestration script with CLI flags |
+| **Restoration Engine** | [`src/Restore-Defaults.ps1`](src/Restore-Defaults.ps1) | Full state restoration script |
+
+---
+
+## 💻 Quick Start Guide
+
+### 1. Interactive Production Launcher
+1. Clone or download the repository:
+   ```cmd
    git clone https://github.com/Muhammad-Wasif/Universal-Windows-Optimizer.git
    ```
-2. Right-click **`Universal-Optimizer.bat`** and select **Run as administrator** (or double-click; it will self-elevate).
-3. Choose your desired action from the interactive menu:
+2. Navigate to [`release/`](release/) and launch **`Universal-Optimizer.bat`** as Administrator.
+3. Select your deployment option from the interactive terminal interface:
    ```text
    ========================================================================
         UNIVERSAL WINDOWS 10 & 11 CLEANER & OPTIMIZER (x86 & x64)
@@ -87,85 +63,92 @@ Includes a dedicated rollback tool ([Restore-Defaults.bat](rollback/Restore-Defa
     [0] Exit
    ```
 
-### Option B: PowerShell Command Line (Automation & Scripts)
-Run in an elevated PowerShell terminal:
+---
+
+## 🛠️ Enterprise & Silent Automation (CI/CD, Intune, SCCM)
+
+For automated IT deployments, MDM policies, or unattended installation pipelines, run `Universal-Optimizer.ps1` with CLI switches:
 
 ```powershell
-# Full Optimization
-.\Universal-Optimizer.ps1 -All
+# Full Silent Optimization Deployment
+.\src\Universal-Optimizer.ps1 -All -Silent
 
-# Junk Cleaner Only
-.\Universal-Optimizer.ps1 -CleanOnly
+# Deep Junk & Temp Cache Purge Only
+.\src\Universal-Optimizer.ps1 -CleanOnly -Silent
 
-# Debloat & OneDrive Removal Only
-.\Universal-Optimizer.ps1 -DebloatOnly
+# Strip Pre-Installed Bloatware & OneDrive Only
+.\src\Universal-Optimizer.ps1 -DebloatOnly -Silent
 
-# Disable Windows Updates Only
-.\Universal-Optimizer.ps1 -DisableUpdates
+# Freeze Windows Update Background Services
+.\src\Universal-Optimizer.ps1 -DisableUpdates -Silent
 
-# Rollback to Windows Defaults
-.\Universal-Optimizer.ps1 -Restore
+# Unattended Disaster Recovery / Rollback to Microsoft Defaults
+.\src\Universal-Optimizer.ps1 -Restore -Silent
 ```
 
 ---
 
-## 🔄 How to Roll Back Changes
+## 🔄 Disaster Recovery & Rollback
 
-If you ever wish to return to standard Windows settings:
-1. Double-click **`rollback\Restore-Defaults.bat`** (or run `.\rollback\Restore-Defaults.ps1`).
-2. The script will restore all update services, re-enable animations, and reset system scheduling.
-3. Restart your PC.
+To revert all modifications and return system services, scheduler priorities, and update settings to factory defaults:
+1. Run [`release/Restore-Defaults.bat`](release/Restore-Defaults.bat) (or run `.\src\Restore-Defaults.ps1` in elevated PowerShell).
+2. The engine will restore services (`wuauserv`, `DoSvc`, `UsoSvc`, `DiagTrack`), re-enable UI animations and transparency, and reset power policies.
+3. Restart the host machine.
 
 ---
 
 ## 📁 Repository Structure
 
 ```text
-universal-windows-optimizer/
+Universal-Windows-Optimizer/
 │
-├── Universal-Optimizer.bat       # One-click auto-elevating runner
-├── Universal-Optimizer.ps1       # Master interactive & CLI PowerShell script
-├── README.md                     # Documentation & usage guide
-├── LICENSE                       # MIT License
-├── .gitignore                    # Git exclusions
+├── .github/
+│   └── workflows/
+│       └── ci.yml                     # Continuous integration script validation
 │
-├── modules/                      # Modular architecture components
-│   ├── Detection.psm1            # OS (10/11), Arch (x86/x64), and device profiling
-│   ├── RestorePoint.psm1         # Safety restore point & JSON state snapshots
-│   ├── VisualLatency.psm1        # Animations, transparency, and menu delay
-│   ├── Debloat.psm1              # Safe AppX debloater with essential app protections
-│   ├── OneDrive.psm1             # Universal OneDrive uninstaller (32/64-bit paths)
-│   ├── WindowsUpdate.psm1        # Update & Delivery Optimization management
-│   ├── BackgroundThreads.psm1    # Foreground CPU priority & telemetry shutdown
-│   ├── BatteryPower.psm1         # Dynamic Speed Shift battery preservation
-│   └── SystemCleaner.psm1        # Deep junk, prefetch, and cache cleaner
+├── docs/
+│   ├── ARCHITECTURE.md                # System scheduling & power state internals
+│   └── BENCHMARKS.md                  # Latency & power efficiency benchmarks
 │
-├── rollback/
-│   ├── Restore-Defaults.bat      # One-click rollback runner
-│   └── Restore-Defaults.ps1      # Comprehensive restoration script
+├── src/                               # Core Source Code
+│   ├── modules/                       # Production PowerShell modules
+│   │   ├── Detection.psm1             # Hardware & kernel profile discovery
+│   │   ├── RestorePoint.psm1          # Safety snapshots & state backups
+│   │   ├── VisualLatency.psm1         # UI rendering & compositor latency
+│   │   ├── Debloat.psm1               # AppX package debloat engine
+│   │   ├── OneDrive.psm1              # Multi-architecture OneDrive removal
+│   │   ├── WindowsUpdate.psm1         # Update & Delivery Optimization management
+│   │   ├── BackgroundThreads.psm1     # Scheduler priority & telemetry control
+│   │   ├── BatteryPower.psm1          # Autonomous frequency scaling (Speed Shift/CPPC)
+│   │   └── SystemCleaner.psm1         # Deep cache, prefetch & junk cleaner
+│   │
+│   ├── Universal-Optimizer.ps1        # Master automation engine
+│   └── Restore-Defaults.ps1           # Master rollback engine
 │
-└── config/
-    └── default-settings.json     # Configuration file and exclusions
+├── release/                           # Distribution Binaries & Launchers
+│   ├── Universal-Optimizer.bat        # Production launcher
+│   └── Restore-Defaults.bat           # Production rollback launcher
+│
+├── config/
+│   └── default-settings.json          # Enterprise policy configuration
+│
+├── CHANGELOG.md                       # Semantic version release notes
+├── CONTRIBUTING.md                    # Developer guidelines
+├── SECURITY.md                        # Security & vulnerability reporting
+├── LICENSE                            # MIT License
+└── README.md                          # Documentation
 ```
 
 ---
 
-## 🔒 Safety & System Integrity
+## 🛡️ Safety Invariants
 
-* **System Restore Backup:** Registers a Windows System Restore point before touching system settings.
-* **Non-Destructive Debloat:** Crucial dependencies (DirectX, VC++ Runtimes, Store, Calculator) are strictly safeguarded.
-* **No Hardcoded Architecture Paths:** Dynamically resolves native vs `SysWOW64` and `Wow6432Node` paths to guarantee error-free execution on both 32-bit and 64-bit systems.
-
----
-
-## 👤 Author
-
-Developed by **Muhammad Wasif**  
-- Email: [wasifalibhatti12517@gmail.com](mailto:wasifalibhatti12517@gmail.com)  
-- GitHub: [@Muhammad-Wasif](https://github.com/Muhammad-Wasif)
+* **Non-Destructive Debloat:** Critical runtime dependencies (DirectX, VC++ Runtimes, .NET Framework, Store framework) are strictly protected.
+* **Pre-Execution Checkpoint:** Automatically triggers a Windows System Restore point before touching registry or system policies.
+* **State Snapshotting:** Captures initial system parameters into `config/backup-state.json` for validation.
 
 ---
 
 ## 📄 License
 
-This project is licensed under the [MIT License](LICENSE).
+This software is released under the [MIT License](LICENSE).

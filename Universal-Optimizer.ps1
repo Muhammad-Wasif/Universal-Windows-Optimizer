@@ -45,8 +45,14 @@ if (-not $isAdmin) {
 }
 
 # 2. Import Modules
-$moduleRoot = Join-Path $PSScriptRoot "modules"
-if (Test-Path "$moduleRoot\Detection.psm1") {
+$candidateModulePaths = @(
+    (Join-Path $PSScriptRoot "src\modules"),
+    (Join-Path $PSScriptRoot "modules"),
+    (Join-Path $PSScriptRoot "..\src\modules")
+)
+$moduleRoot = $candidateModulePaths | Where-Object { Test-Path "$_\Detection.psm1" } | Select-Object -First 1
+
+if ($moduleRoot) {
     Import-Module "$moduleRoot\Detection.psm1" -Force
     Import-Module "$moduleRoot\RestorePoint.psm1" -Force
     Import-Module "$moduleRoot\VisualLatency.psm1" -Force
@@ -172,7 +178,12 @@ if ($DisableUpdates) {
 
 if ($Restore) {
     Show-Header
-    & "$PSScriptRoot\rollback\Restore-Defaults.ps1"
+    $restoreScript = @(
+        (Join-Path $PSScriptRoot "src\Restore-Defaults.ps1"),
+        (Join-Path $PSScriptRoot "rollback\Restore-Defaults.ps1"),
+        (Join-Path $PSScriptRoot "Restore-Defaults.ps1")
+    ) | Where-Object { Test-Path $_ } | Select-Object -First 1
+    if ($restoreScript) { & $restoreScript }
     Exit
 }
 
@@ -194,7 +205,15 @@ do {
         "3" { Show-Header; Disable-WindowsUpdates; break }
         "4" { Show-Header; Invoke-UniversalDebloat -MachineWide; Remove-UniversalOneDrive; break }
         "5" { Show-Header; Optimize-VisualPerformance; break }
-        "6" { & "$PSScriptRoot\rollback\Restore-Defaults.ps1"; break }
+        "6" { 
+            $restoreScript = @(
+                (Join-Path $PSScriptRoot "src\Restore-Defaults.ps1"),
+                (Join-Path $PSScriptRoot "rollback\Restore-Defaults.ps1"),
+                (Join-Path $PSScriptRoot "Restore-Defaults.ps1")
+            ) | Where-Object { Test-Path $_ } | Select-Object -First 1
+            if ($restoreScript) { & $restoreScript }
+            break 
+        }
         "0" { Exit }
         default { Write-Host "Invalid selection. Please choose 0-6." -ForegroundColor Red; Start-Sleep -Seconds 1 }
     }
