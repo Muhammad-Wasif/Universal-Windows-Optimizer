@@ -1,0 +1,27 @@
+{
+  "version": "1.0.0",
+  "name": "Universal Windows 10 & 11 Optimizer",
+  "options": {
+    "disableAnimations": true,
+    "disableTransparency": true,
+    "menuShowDelayMs": 10,
+    "disableWindowsUpdates": true,
+    "disableDeliveryOptimization": true,
+    "removeOneDrive": true,
+    "removeBloatware": true,
+    "protectEssentialApps": true,
+    "cpuForegroundPriorityPercent": 90,
+    "disableTelemetry": true,
+    "powerProfile": "DynamicBatterySafe",
+    "cleanTempFiles": true
+  },
+  "protectedApps": [
+    "Microsoft.WindowsStore",
+    "Microsoft.WindowsCalculator",
+    "Microsoft.Windows.Photos",
+    "Microsoft.WindowsNotepad",
+    "Microsoft.Paint",
+    "Microsoft.WindowsTerminal",
+    "Microsoft.ScreenSketch"
+  ]
+}

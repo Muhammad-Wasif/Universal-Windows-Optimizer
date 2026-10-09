@@ -1,0 +1,10 @@
+# Windows Thumbs & desktop
+Thumbs.db
+desktop.ini
+*.tmp
+
+# Custom configuration backups
+config/backup-state.json
+
+# Logs
+*.log
